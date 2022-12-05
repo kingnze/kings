@@ -1,4 +1,3 @@
-from tkinter import Button
 from django.db import models
 from .validators import Banner_v
 from datetime import datetime

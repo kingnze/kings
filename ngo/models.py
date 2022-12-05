@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.utils.text import slugify
@@ -139,6 +140,7 @@ class About(models.Model):
     date_posted = models.DateTimeField(default=datetime.now, null=True,blank=True )
     published = models.BooleanField(default=True,null=True,blank=True)
     body = RichTextField()
+    favicon = models.ImageField(upload_to='about', default='about/favicon-96x96.png',  null=True,blank=True)
          
 
     def __str__(self):

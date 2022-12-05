@@ -39,6 +39,7 @@ from climatevictims.views import Climatevictims
 
 
 def index(request):
+    about = About.objects.get(pk=1)
     banner = Banner.objects.order_by('-date_posted').filter(published=True)
     blog = Blog.objects.order_by('-date_posted').filter(published=True)[:3]
     quote = Quote.objects.order_by('-date_posted').filter(is_published=True)[:3]
@@ -57,6 +58,7 @@ def index(request):
     donate_1 = Donate.objects.order_by('-date_posted').filter(published=True)
 
     context ={
+        'about': about,
         'banner': banner,
         'blog': blog,
         'quote': quote,
