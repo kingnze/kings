@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ post.title}}
+{% endblock title %}
+
+{% block content %}
+ <section class="inner-banner py-5">
+    <div class="w3l-breadcrumb py-lg-5">
+        <div class="container pt-4 pb-sm-4">
+            <h4 class="inner-text-title font-weight-bold pt-sm-5 pt-4">Rural Program</h4>
+            <ul class="breadcrumbs-custom-path">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li style="font-size: larger;" class="active"><i class="fas fa-angle-right mx-2"></i>{{ post.title}}</li>
+            </ul>
+        </div>
+    </div>
+   
+</section>
+<section style="margin-top: -6rem !important;" class="about-section py-5">
+    <div class="container py-md-5 py-4">
+        
+        
+        <div class="row mt-sm-5 mt-4">
+            {% if post %}
+                <div class="col-lg-8 mt-lg-0 mt-4 ">
+                    {% if post.equptimage %}
+                    <img src="{{post.equptimage_1.url}}" alt="Charity Foundation in Africa, Charity Foundation in Nigeria  Help the Poor, Save The Children In Africa" class="img-fluid radius-image py-3">
+                    {% endif %}
+                    <h3 class="title-style mb-4">{{ post.title}}</h3>
+                    <p>{{post.body | safe}}</p>
+                </div>     
+            {% endif %}
+            <!--right-->
+				<aside class="col-lg-4 mt-3 agileits-kings-right-blog-con text-right">
+					<div class="right-blog-info text-left">
+						<div class="tech-btm">
+							<img src="{{post.equptimage.url}}" class="img-fluid" alt="Charity Foundation in Africa, Charity Foundation in Nigeria  Help the Poor, Save The Children In Africa">
+							<h5  >{{ post.title}}</h5>
+						</div>
+						<div class="tech-btm">
+							<h3 class="title-style">Sign up to our newsletter</h3>
+							<p>Subscribe to our mailing list and get updates to your email inbox.</p>
+							<form action="#" method="post">
+								{% csrf_token %}
+								<input type="email" placeholder="Email" required="">
+								<input style="background: var(--primary-color);" type="submit" value="Subscribe">
+							</form>
+
+						</div>
+						<div style="font-weight: bold; font-family: 'Courier New', Courier, monospace;" class="tech-btm">
+							<h4>Categories</h4>
+							<ul class="service-list">
+								<li class="list-group-item service-link d-flex justify-content-between align-items-center">
+								  <a style="color: var(--font-color)!important; color: black!important; font-family: 'Nunito'; font-size: large;"   href="{% url 'index' %}">Home</a>
+								  
+								</li>
+								<li class="list-group-item service-link d-flex justify-content-between align-items-center">
+									<a style="color: var(--font-color)!important; color: black!important; font-family: 'Nunito'; font-size: large;" href="{% url 'projects' %}">Project</a>
+									
+								  </li>
+								<li class="list-group-item service-link d-flex justify-content-between align-items-center">
+									<a style="color: var(--font-color)!important; color: black!important; font-family: 'Nunito'; font-size: large;"  href="{% url 'about' %}">About</a>
+								  
+								</li>
+								<li class="list-group-item service-link d-flex justify-content-between align-items-center">
+									<a style="color: var(--font-color)!important; color: black!important; font-family: 'Nunito'; font-size: large; " href="{% url 'blog' %}">Blog</a>
+								  
+								</li>
+								<li class="list-group-item service-link d-flex justify-content-between align-items-center">
+									<a style="color: var(--font-color)!important; color: black!important; font-family: 'Nunito'; font-size: large; "  href="{% url 'gallery' %}">Gallery</a>
+								  
+								</li>
+							  </ul>
+						</div>
+						<div class="tech-btm">
+							<h4>Top stories </h4>
+
+							<div class="blog-grids row mb-3">
+                                {% if blog %}
+                                {% for item in blog %}
+								<div class="col-md-5 blog-grid-left">
+									<a href="{% url 'blog' item.slug %}">
+										<img style="border: none;" src="{{item.blogimg.url}}" class="img-fluid" alt="Charity Foundation in Africa, Charity Foundation in Nigeria  Help the Poor, Save The Children In Africa">
+									</a>
+								</div>
+								<div class="col-md-7 blog-grid-right">
+
+									<h5>
+										<a href="{% url 'blog' item.slug %}">{{item.title}}</a>
+									</h5>
+									<div class="sub-meta">
+										<span>
+											<i class="far fa-clock"></i> {{ item.date_posted }}</span>
+									</div>
+								</div>
+                                {% endfor %}
+                                {% endif %}
+
+							</div>
+						</div>
+					</div>
+
+				</aside>
+				<!--//right-->
+        </div>
+        
+    </div>
+</section>
+
+{% endblock content %}

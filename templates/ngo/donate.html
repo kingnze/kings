@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Donate Now
+{% endblock title %}
+
+{% block content %}
+
+<section class="bg1">
+    <div class="banner-wrap py-5">
+        <div class="banner-slider">
+            <div class="banner-slide">
+                <div class="container">
+                    
+                    <div class="hero-content py-4">
+                        {% if donatebanner %}
+                    {% for item in donatebanner %}
+                      <h1>
+                            {{ item.title}}
+                        </h1>
+                    {% endfor %}  
+                    {% endif %}
+                        <div class="cta-btn">
+                            <form action="https://www.paypal.com/donate" method="post" target="_top">
+                                <input style="width: 13rem;" type="hidden" name="hosted_button_id" value="CGBB7P98Q2HEY" />
+                                <input style="width: 13rem;" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                                <img alt="" border="0" src="https://www.paypal.com/en_NG/i/scr/pixel.gif" width="1" height="1" />
+                                </form>
+                        </div>
+                        
+                    </div>
+                    <div class="hero-content">
+                        
+                        <img class="py-2" src="{% static 'images/QRCode.png' %}" alt="">
+                        <h5 style="font-weight: 600; color: white;">Our QR Code</h5>
+                    </div>
+                </div>
+                <div class="hero-overlay"></div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<section class="donate">
+    <div class="container">
+        <div class="row">
+            {% if enoughdonate %}
+            {% for item in enoughdonate %}
+            <div class="col-md-12">
+                <br>
+                <h1 class=" text-center py-2">{{ item.title}}</h1>
+                <p>{{ item.body | truncatechars:4000 | safe }}</p>    
+
+    
+            </div>
+            {% endfor %}  
+            {% endif %}
+            
+        </div>
+    </div> 
+</section>   
+<section class="homeblock-stats py-5" id="stats">
+    <div class="container py-md-5 py-4">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                {% if starts %}
+                {% for item in starts %}
+                <div class="position-relative">
+                    <h3 class="title-style mb-3">{{ item.title }}</h3>
+                </div>
+                <p>{{ item.body }}</p>
+                <div class="row mt-4 pt-2">
+                    
+                    <div class="col-6">
+                        <div class="counta color-bg-1">
+                            <div class="coun-title d-flex align-items-center">
+                                <div class="timer coun-number">{{ item.number_1 }}</div>
+                            </div>
+                            <p class="coun-text">{{ item.name_1 }}</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="counta color-bg-2">
+                            <div class="coun-title d-flex align-items-center">
+                                <div class="timer coun-number">{{ item.number_2 }}</div>
+                            </div>
+                            <p class="coun-text">{{ item.name_2 }}</p>
+                        </div>
+                    </div>
+                    <div class="col-6 mt-4">
+                        <div class="counta color-bg-3">
+                            <div class="coun-title d-flex align-items-center">
+                                <div class="timer coun-number">{{ item.number_3 }}</div>
+                            </div>
+                            <p class="coun-text">{{ item.name_3 }}</p>
+                        </div>
+                    </div>
+                    <div class="col-6 mt-4">
+                        <div class="counta color-bg-4">
+                            <div class="coun-title d-flex align-items-center">
+                                <div class="timer coun-number">{{ item.number_4 }}</div>
+                            </div>
+                            <p class="coun-text">{{ item.name_4 }}</p>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-6 offset-xl-1 ps-xl-0 mt-lg-0 mt-5">
+                <img src="{{item.startimg.url}}" class="img-fluid radius-image" alt="Charity Foundation in Africa, Charity Foundation in Nigeria  Help the Poor, Save The Children In Africa">
+            </div>
+            {% endfor %}  
+            {% endif %}
+        </div>
+    </div>
+</section>
+<br>
+<section class="king-specification-6">
+    <div class="specification-6-mian py-5">
+        <div class="container py-lg-5">
+            <div class="row story-6-grids">
+                {% if start1 %}
+                {% for item in start1 %}
+                <div class="col-lg-10 story-gd pl-lg-4  text-center mx-auto">
+                    <div class="title-content px-lg-5">
+                        <h6 style="color: white;" class="sub-title">{{item.sub_title}}</h6>
+                        <h3 style="font-weight: 600; color: white;" class="hny-title two">{{item.title}}</h3>
+                        <p style="color: white;">{{item.body}}</p>
+                        <br>
+                        <a style="background: var(--primary-color);" href="{% url 'donate' %}" class="donate">Donate</a>
+                    </div>
+                    <div class="skill_info mt-lg-5 mt-4 pt-lg-4">
+                        <div class="stats_left">
+                            <div class="counter_grid">
+                                <div style="border-color: none;" class="icon_info">
+                                    <p class="counter">{{ item.number_1 }}</p>
+                                    <h4>{{ item.name_1 }}</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stats_left">
+                            <div class="counter_grid">
+                                <div class="icon_info">
+                                    <p class="counter">{{ item.number_2 }}</p>
+                                    <h4>{{ item.name_2 }}</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stats_left">
+                            <div class="counter_grid">
+                                <div class="icon_info">
+                                    <p class="counter">{{ item.number_3 }}</p>
+                                    <h4>{{ item.name_3 }}</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stats_left">
+                            <div class="counter_grid">
+                                <div class="icon_info">
+                                    <p class="counter">{{ item.number_4 }}</p>
+                                    <h4>{{ item.name_4 }}</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                {% endfor %}  
+        {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <marquee style="background-color: var(--primary-color);  color: white; height: 2rem; font-size: large; font-weight: 500;" behavior="" direction="left">We start by lending a helpping hand to the poor and less priviliage children,   Helpping the climate victims get back up...  School Equipment for 400,000 Kids in Africa,  Provide Access to Clean Water,  Hope For Disabled People,  Sustain A School For 200,000 Children In Rural Area In Africa, Technology Afterschool Clubs for Girls in Africa,  Safe Home For Orphans And Vulnerable Children In Africa,  Fighting Hunger And Food Insecurity In Africa...</marquee>
+        </div>
+    </div>
+</div>
+<br> 
+{% endblock content %}

@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  About Us
+{% endblock title %}
+
+{% block content %}
+<section class="About py-5">
+    <div class="king-breadcrumb py-lg-5">
+        <div class="container pt-4 pb-sm-4">
+            <h4 class="inner-text-title font-weight-bold pt-sm-5 pt-4">About Us</h4>
+            <ul class="breadcrumbs-custom-path">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li class="active"><i class="fas fa-angle-right mx-2"></i>About</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="about-section">
+    <div class="container py-md-5 py-0">
+        <div class="row mt-sm-5 mt-4">
+            {% if about %}
+            {% for item in about %}
+                <div class="col-lg-12 mt-lg-0 mt-4 ">
+                    <h6 class="text-center">{{ item.sub_title }}</h6>
+                    <h3 class="title-style mb-4 text-center">{{ item.title }}</h3>
+                    <p>{{ item.body | truncatechars:4000 | safe }}</p>
+                </div>
+            {% endfor %}                 
+            {% endif %}
+                        
+        </div>
+        <div class="row mt-sm-5 mt-4">
+            {% if ourvision %}
+            {% for item in ourvision %}
+            <div class="col-md-6">
+                <h4>{{ item.title }}</h4>
+                <p>{{ item.body | truncatechars:3000 | safe }}</p>
+                <br>
+            </div>
+            {% endfor %}                 
+            {% endif %}
+            {% if ourmission %}
+            {% for item in ourmission %}
+            <div class="col-md-6">
+                <h4>{{ item.title }}</h4>
+                <p>{{ item.body | truncatechars:3000 | safe }}</p>
+            </div>
+            {% endfor %}                 
+            {% endif %}
+
+        </div>
+
+        
+    </div>
+</section>
+<section>
+    <div class="king-faq-block py-5" id="faq">
+        <div class="container py-lg-5">
+            <div class="row align-items-center">
+                {% if ourvalues %}
+                {% for item in ourvalues %}
+                <div class="col-lg-7 ps-lg-5">
+                    <h2 class="py-2">{{ item.title }}</h2>
+                    <ol>
+                        <li class="py-2">{{ item.body | truncatechars:3000 | safe }}</li>
+                    </ol>
+                </div>
+                <div class="col-lg-5 mb-lg-0 mb-5">
+                    <img src="{{item.ourvalues.url}}" class="img-fluid radius-image" alt="Charity Foundation in Africa, Charity Foundation in Nigeria  Help the Poor, Save The Children In Africa">
+                </div>
+                {% endfor %}                 
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+<section class="homeblock-stats py-5" id="stats">
+    <div class="container py-md-5 py-4">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                {% if starts %}
+                {% for item in starts %}
+                <div class="position-relative">
+                    <h3 class="title-style mb-3">{{ item.title }}</h3>
+                </div>
+                <p>{{ item.body }}</p>
+                <div class="row mt-4 pt-2">
+                    
+                    <div class="col-6">
+                        <div class="counta color-bg-1">
+                            <div class="coun-title d-flex align-items-center">
+                                <div class="timer coun-number">{{ item.number_1 }}</div>
+                            </div>
+                            <p class="coun-text">{{ item.name_1 }}</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="counta color-bg-2">
+                            <div class="coun-title d-flex align-items-center">
+                                <div class="timer coun-number">{{ item.number_2 }}</div>
+                            </div>
+                            <p class="coun-text">{{ item.name_2 }}</p>
+                        </div>
+                    </div>
+                    <div class="col-6 mt-4">
+                        <div class="counta color-bg-3">
+                            <div class="coun-title d-flex align-items-center">
+                                <div class="timer coun-number">{{ item.number_3 }}</div>
+                            </div>
+                            <p class="coun-text">{{ item.name_3 }}</p>
+                        </div>
+                    </div>
+                    <div class="col-6 mt-4">
+                        <div class="counta color-bg-4">
+                            <div class="coun-title d-flex align-items-center">
+                                <div class="timer coun-number">{{ item.number_4 }}</div>
+                            </div>
+                            <p class="coun-text">{{ item.name_4 }}</p>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-6 offset-xl-1 ps-xl-0 mt-lg-0 mt-5">
+                <img src="{{item.startimg.url}}" class="img-fluid radius-image" alt="">
+            </div>
+            {% endfor %}  
+            {% endif %}
+        </div>
+    </div>
+</section>
+<div class="king-faq-block py-5" id="faq">
+    <div class="container content-gd py-lg-5">
+        <div class="row mt-3">
+            {% if childlove %}
+            {% for item in childlove %}
+            <div class="col-lg-6 faqw3-right pe-lg-5">
+                <div class="faqw3content text-left">
+                    <h6 class="title-subw3hny mb-1 text-left">{{ item.subtitle }}</h6>
+                    <h3 class="title-style mb-3">{{ item.title}}</h3>
+                </div>
+                <img src="{{item.accordimg.url}}" alt="Charity Foundation in Africa, Charity Foundation in Nigeria  Help the Poor, Save The Children In Africa" class="img-fluid radius-image">    
+            </div> 
+            <div class="col-lg-6 faqw3-left">
+                <br>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                {{ item.accordtitle_1}}
+                            </button>
+                        </h4>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">{{ item.accordbody_1}}</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                {{ item.accordtitle_2}}
+                            </button>
+                        </h4>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">{{ item.accordbody_2}}</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            {{ item.accordtitle_3}}
+                            </button>
+                        </h4>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">{{ item.accordbody_3}}</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="headingFourth">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourth" aria-expanded="false" aria-controls="collapseFourth">
+                                {{ item.accordtitle_4 }}
+                            </button>
+                        </h4>
+                        <div id="collapseFourth" class="accordion-collapse collapse" aria-labelledby="headingFourth" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">{{ item.accordbody_4}}</div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+            {% endfor %}         
+            {% endif %}
+            
+    
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <marquee style="background-color: var(--primary-color);  color: white; height: 2rem; font-size: large; font-weight: 500;" behavior="" direction="left">We start by lending a helpping hand to the poor and less priviliage children...   Helpping the climate victims get back up...  School Equipment for 400 Kids in Nigeria...  Provide Access to Clean Water...  Hope For Disabled People...  Sustain A School For 20,000 Children In Rural Area In Nigeria... Technology Afterschool Clubs for Girls in Nigeria...  Safe Home For Orphans And Vulnerable Children In Nigeria...  Fighting Hunger And Food Insecurity In Nigeria...</marquee>
+        </div>
+    </div>
+</div>
+<br> 
+{% endblock content %}

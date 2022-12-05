@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Climate Victims
+{% endblock title %}
+
+{% block content %}
+ <section class="climatevictims py-5">
+    <div class="king-breadcrumb py-lg-5">
+        <div class="container pt-4 pb-sm-4">
+            <h4 class="inner-text-title font-weight-bold pt-sm-5 pt-4">Climate Victims</h4>
+            <ul class="breadcrumbs-custom-path">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li class="active"><i class="fas fa-angle-right mx-2"></i>Climate Victims</li>
+            </ul>
+        </div>
+    </div>
+   
+</section>
+<section class="about-section py-5">
+    <div class="container py-md-5 py-4">
+        
+        
+        <div class="row mt-sm-5 mt-4">
+            {% if climatevictims %}
+            {% for item in climatevictims %}
+            <div class="col-lg-12 mt-lg-0 mt-4 ">
+                <img src="{{item.climatevictimsimg.url}}" alt="Charity Foundation in Africa, Charity Foundation in Nigeria  Help the Poor, Save The Children In Africa" class="img-fluid radius-image">
+                <h3 class="title-style mb-4">{{ item.title}}</h3>
+                <p>{{ item.body}}</p>
+            </div>
+            {% endfor %}     
+        {% endif %}
+        </div>
+        
+    </div>
+</section>
+{% endblock content %}

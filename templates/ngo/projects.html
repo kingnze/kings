@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Our Projects
+{% endblock title %}
+
+{% block content %}
+<section class="inner-banner py-5">
+    <div class="king-breadcrumb py-lg-5">
+        <div class="container pt-4 pb-sm-4">
+            <h4 class="inner-text-title font-weight-bold pt-sm-5 pt-4">Our Projects</h4>
+            <ul class="breadcrumbs-custom-path">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li class="active"><i class="fas fa-angle-right mx-2"></i>Our Projects</li>
+            </ul>
+        </div>
+    </div>
+   
+</section>
+<section>
+    <div class="king-grids-block-5 blog-bg-sec py-5">
+        <div class="container py-md-5 py-4">
+            <div class="position-relative mb-lg-5 mb-4">
+                <h3 class="title-style mb-2 text-center">Our Projects</h3>
+            </div>
+            <div class="row justify-content-center">
+                {% if project %}
+                {% for item in project %}
+                <div class="col-lg-4 col-md-6 grids5-info">
+                    <a href="{% url 'project' item.slug %}"><img src="{{item.serviceimg.url}}" alt="Charity Foundation in Africa, Charity Foundation in Nigeria  Help the Poor, Save The Children In Africa"
+                            class="img-fluid radius-image" /></a>
+                    <div class="blog1-info-grid">
+                        <h4><a href="{% url 'project' item.slug %}">{{item.title}}</a></h4>
+                        <div class="blog-info mt-3">
+                            <a href="{% url 'project' item.slug %}">Lean  More <span class="fa fa-arrow-right ms-1"></span></a><a href="{% url 'donate' %}">Donate<span class="fa fa-arrow-right ms-1"></span></a>
+
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  {% if project.has_other_pages %}
+                    <ul class="pagination">
+                      {% if project.has_previous %}
+                          <li class="page-item">
+                            <a href="?page={{project.previous_page_number}}" class="page-link">&laquo;
+                            </a>
+                          </li>
+                          {% else %}
+                          <!-- <li class="page-link disabled">
+                            <a class="page-link">&laquo;</a>
+                          </li> -->
+                      {% endif %}
+                      {% for i in project.paginator.page_range %}
+                        {% if project.number == i %}
+                          <li class="page-item active">
+                            <a class="page-link">{{i}}</a>
+                          </li>
+                       {% else %}
+                       <li class="page-item">
+                         <a href="?page={{i}}" class="page-link">{{i}}</a>
+                       </li>
+                     {% endif %}
+                    {% endfor %} 
+                    {% if project.has_next %}
+                        <li class="page-item">
+                          <a href="?page={{project.next_page_number}}" class="page-link">&raquo;
+                          </a>
+                        </li>
+                      {% else %}
+                        <!-- <li class="page-link disabled">
+                          <a class="page-link">&raquo;</a>
+                        </li> -->
+                    {% endif %}
+                  </ul>                   
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+{% endblock content %}
