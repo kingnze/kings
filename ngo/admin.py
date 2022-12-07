@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import  Contact, Service, Donate, About, Ourvision, Ourmission, Ourvalues, Donatebanner, Enoughdonate
 
+
+
 admin.site.register(Service) 
 admin.site.register(Donate) 
 admin.site.register(About) 

@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-fsh9-jmqkbzimulzm9vr=izo3h@3!%4#d!02u#0ez^lq2tprn2
 DEBUG = False
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['3.83.22.238']
+ALLOWED_HOSTS = ['3.83.22.238', 'www.goodwillaid.com.ng', 'goodwillaid.com.ng', '*']
 
 
 # Application definition
@@ -66,7 +66,8 @@ JAZZMIN_SETTINGS = {
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
     "site_header": "Goodwill",
     "site_brand": "Goodwill",
-     "show_sidebar": True,
+    "show_sidebar": True,
+    # favicon-96x96.png
     
     
 }

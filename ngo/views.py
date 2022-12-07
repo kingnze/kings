@@ -38,7 +38,7 @@ from climatevictims.views import Climatevictims
 # Create your views here.
 
 
-def index(request):
+def index(request): 
     about = About.objects.get(pk=1)
     banner = Banner.objects.order_by('-date_posted').filter(published=True)
     blog = Blog.objects.order_by('-date_posted').filter(published=True)[:3]
