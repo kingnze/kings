@@ -9,6 +9,7 @@
  <section class="inner-banner py-5">
     <div class="king-breadcrumb py-lg-5">
         <div class="container pt-4 pb-sm-4">
+            <br>
             <h4 class="inner-text-title font-weight-bold pt-sm-5 pt-4">Our Gallery</h4>
             <ul class="breadcrumbs-custom-path">
                 <li><a href="{% url 'index' %}">Home</a></li>
@@ -30,16 +31,27 @@
             <div class="row">
                 {% if gallery %}
                 {% for item in gallery %}
-                <div class="col-lg-3 col-6 mt-md-5 mt-4">
+                <div class="col-lg-4 col-6 mt-md-5 mt-4">
                     <div class="w3property-grid">
-                        <a href="#">
+                        <span class="image-block">
+
+                            <a class="image-zoom" href="{{item.imggallery.url}}" data-gal="prettyPhoto[gallery]">
+                                <div class="content-overlay"></div>
+                                <img src="{{item.imggallery.url}}" class="img-fluid w3layouts agileits" alt="portfolio-img">
+                                <div class="w3layouts_team_grid_pos">
+                                    <h3 style="color: white;" class="wthree_text">{{ item.title}}</h3>
+        
+                                </div>
+                            </a>
+                        </span>
+                        <!-- <a href="#">
                             <div class="box16">
                                 <img class="img-fluid" src="{{item.imggallery.url}}" alt=" Charity Foundation in Africa, Charity Foundation in Nigeria  Help the Poor, Save The Children In Africa">
                                 <div class="box-content text-center">
                                     <h3 class="title">{{item.title}}</h3>
                                 </div>
                             </div>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
                 {% endfor %}

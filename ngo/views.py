@@ -1,42 +1,21 @@
 from django.shortcuts import render, redirect
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.template import context
-from .models import Contact, Service, Donate, About, Ourvision, Ourmission, Ourvalues, Donatebanner, Enoughdonate
+from django.core.paginator import Paginator
+from . models import *
+from objective . models import *
+from quote . models import *
+from blog . models import *
+from banner . models import *
+from schoolprogram . models import *
+from helpthekids . models import *
+from gallery . models import *
+from girlstec . models import *
+from childlove . models import *
+from starts . models import *
+from starts1 . models import *
+from vulnerable . models import *
+from fighthunger . models import *
+from climatevictims . models import *
 from django.contrib import messages
-from banner.models import Banner
-from banner.views import Banner
-from blog.models import Blog
-from blog.views import Blog
-from quote.models import Quote
-from quote.views import Quote
-from objective.models import Objective
-from objective.views import Objective
-from disabled.models import Disabled
-from disabled.views import Disabled
-from schoolprogram.models import Schoolequpt
-from schoolprogram.views import Schoolequpt
-from helpthekids.models import Sustainschool
-from helpthekids.views import Sustainschool
-from gallery.models import Gallery
-from gallery.views import Gallery
-from girlstec.models import Girlstec
-from girlstec.views import Girlstec
-from childlove.models import Childlove
-from childlove.views import Childlove
-from starts.models import Start
-from starts.views import Start
-from starts1.models import Start1
-from starts1.views import Start1
-from vulnerable.models import Vulnerable
-from vulnerable.views import Vulnerable
-from fighthunger.models import Fighthunger
-from fighthunger.views import Fighthunger
-from climatevictims.models import Climatevictims
-from climatevictims.views import Climatevictims
-
-
-# Create your views here.
-
 
 def index(request): 
     about = About.objects.get(pk=1)
@@ -79,7 +58,6 @@ def index(request):
 
     return render(request, 'ngo/index.html',context)
 
-
 def about(request):
     starts = Start.objects.order_by('-date_posted').filter(is_published=True)
     about = About.objects.order_by('-date_posted').filter(published=True)
@@ -118,8 +96,6 @@ def project(request,slug_id):
     } 
     return render(request,'ngo/project.html',context)
 
-
-
 def donate(request):
     donatebanner = Donatebanner.objects.order_by('-date_posted').filter(published=True)
     enoughdonate = Enoughdonate.objects.order_by('-date_posted').filter(published=True)
@@ -149,7 +125,6 @@ def contact(request):
           messages.error(request,f"Something went wrong...")
 
   return render(request, 'ngo/contact.html')   
-
 
 
  
